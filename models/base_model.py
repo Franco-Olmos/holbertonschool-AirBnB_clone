@@ -28,6 +28,9 @@ class BaseModel:
         of __dict__ of the instance.
         __dict__ se usa para almacenar los atributos del objeto."""
         new_dict = self.__dict__.copy()
-        __class__
+        new_dict[__class__] = self.created_at
+        new_dict[__class__] = self.updated_at
+        new_dict[__class__] = self.__class__.__name__
+
         .isoformat()
         return new_dict
