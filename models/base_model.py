@@ -17,7 +17,7 @@ class BaseModel:
 
     def __str__(self):
         """????????????????"""
-        return (f."[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
+        return (f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}")
 
     def save(self):
         """Updates the public instance attribute"""
@@ -28,9 +28,7 @@ class BaseModel:
         of __dict__ of the instance.
         __dict__ se usa para almacenar los atributos del objeto."""
         new_dict = self.__dict__.copy()
-        new_dict[__class__] = self.created_at
-        new_dict[__class__] = self.updated_at
-        new_dict[__class__] = self.__class__.__name__
-
-        .isoformat()
+        new_dict["__class__"] = self.__class__.__name__
+        new_dict["created_at"] = self.created_at.isoformat()
+        new_dict["updated_at"] = self.updated_at.isoformat()
         return new_dict
