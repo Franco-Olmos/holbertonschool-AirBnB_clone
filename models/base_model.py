@@ -7,7 +7,6 @@ import uuid
 import datetime
 from models import storage
 
-
 class BaseModel:
 
     def __init__(self, *args, **kwargs):
@@ -15,11 +14,11 @@ class BaseModel:
             self.id = kwargs["id"]
             self.created_at = kwargs["created_at"]
             self.updated_at = kwargs["updated_at"]
-        
+
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
             storage.new(self)
 
 
@@ -28,7 +27,7 @@ class BaseModel:
 
     def save(self):
         """Updates the public instance attribute"""
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.datetime.now()
         storage.save()
 
     def to_dict(self):
