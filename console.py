@@ -19,5 +19,14 @@ class HBNBCommand(cmd.Cmd):
         """dddddddddddddddddddddddddddddd"""
         pass
 
+    def do_create(self, arg):
+        imput = args.split()
+        if not imput:
+            print("** class name missing **")
+        if not:
+            print("** class doesn't exist **")
+    
+    def do_show(
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
