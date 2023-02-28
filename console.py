@@ -19,14 +19,21 @@ class HBNBCommand(cmd.Cmd):
         """dddddddddddddddddddddddddddddd"""
         pass
 
-    def do_create(self, arg):
+    def do_create(self, argv):
         imput = args.split()
         if not imput:
             print("** class name missing **")
-        if not:
+        if argv not is BaseModel:
             print("** class doesn't exist **")
     
-    def do_show(
+    def do_show(self, argv):
+        imput = args.split()
+        if not imput:
+            print("** class name missing **")
+        if argv not is BaseModel:
+            print("** class doesn't exist **")
+        if len(argv) == 1:
+            print("** instance id missing **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
