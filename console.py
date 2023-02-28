@@ -8,15 +8,15 @@ class HBNBCommand(cmd.Cmd):
     file = None
 
     def do_quit(self, arg):
-        """ddddddd!"""
+        """dddddddddddddddddddddddddddddd"""
         return True
 
     def do_EOF(self, arg):
-        """ddddd"""
+        """dddddddddddddddddddddddddddddd"""
         return True
 
-    def do_emptyline(self):
-        """ddddddd"""
+    def emptyline(self):
+        """dddddddddddddddddddddddddddddd"""
         pass
 
 if __name__ == '__main__':
