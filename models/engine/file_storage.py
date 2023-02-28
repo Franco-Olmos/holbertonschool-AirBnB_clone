@@ -16,7 +16,8 @@ class FileStorage:
 
     def new(self, obj):
         """ Set in __objects """
-        FileStorage.__objects[f"{obj.__class__.__name__}.{obj.id}"] = obj
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """ Serialize __objects to JSON """
@@ -37,9 +38,8 @@ class FileStorage:
         from models.place import Place
         from models.review import Review
 
-        if not path.exists(FileStorage.__file_path):
-            return
-        with open(FileStorage.__file_path, mode='r') as f:
+        if os.path.exists(FileStorage.__file_path):
+        with open(FileStorage.__file_path, 'r', enconding='utf-8') as f:
             obj_dict = json.load(f)
             classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
                        'City': City, 'Amenity': Amenity,
