@@ -67,3 +67,5 @@ class HBNBCommand(cmd.Cmd):
             for a in storage.all():
                 print(str(a))
 
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
