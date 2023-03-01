@@ -30,12 +30,23 @@ class HBNBCommand(cmd.Cmd):
         """dddddddddddddddddddddddddddddd"""
         pass
 
-    def do_create(self, argv):
+    """def do_create(self, argv):
         imput = args.split()
         if not imput:
             print("** class name missing **")
         if argv is not BaseModel:
+            print("** class doesn't exist **")"""
+    def do_create(self, argv):
+        """Create a new class and asigns it an id."""
+        inputs = argv.split()
+        if not inputs:
+            print("** class name missing **")
+        elif inputs[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
+        else:
+            instance = HBNBCommand.classes[inputs[0]]()
+            print(instance.id)
+            instance.save()
     
     def do_show(self, argv):
         imput = args.split()
@@ -49,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             HBNBCommand().cmdloop()
 
     def do_destroy(self, arg):
-        if len(arg) == 1:
+        if len(arg) == 0:
             print("** class name missing **")
             return
 
