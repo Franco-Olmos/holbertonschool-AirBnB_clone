@@ -23,7 +23,7 @@ class HBNBCommand(cmd.Cmd):
         imput = args.split()
         if not imput:
             print("** class name missing **")
-        if argv not is BaseModel:
+        if argv is not BaseModel:
             print("** class doesn't exist **")
     
     def do_show(self, argv):
