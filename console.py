@@ -1,11 +1,22 @@
 #!/usr/bin/python3
 """ shebang """
 import cmd
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     file = None
+    classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+               'City': City, 'Amenity': Amenity, 'Place': Place,
+               'Review': Review}
 
     def do_quit(self, arg):
         """dddddddddddddddddddddddddddddd"""
@@ -19,12 +30,23 @@ class HBNBCommand(cmd.Cmd):
         """dddddddddddddddddddddddddddddd"""
         pass
 
-    def do_create(self, argv):
+    """def do_create(self, argv):
         imput = args.split()
         if not imput:
             print("** class name missing **")
         if argv is not BaseModel:
+            print("** class doesn't exist **")"""
+    def do_create(self, argv):
+        """Create a new class and asigns it an id."""
+        inputs = argv.split()
+        if not inputs:
+            print("** class name missing **")
+        elif inputs[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
+        else:
+            instance = HBNBCommand.classes[inputs[0]]()
+            print(instance.id)
+            instance.save()
     
     def do_show(self, argv):
         imput = args.split()
