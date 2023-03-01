@@ -34,9 +34,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         if len(argv) == 1:
             print("** instance id missing **")
-
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+        if __name__ == '__main__':
+            HBNBCommand().cmdloop()
 
     def do_destroy(self, arg):
         if len(arg) == 0:
