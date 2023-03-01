@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
             HBNBCommand().cmdloop()
 
     def do_destroy(self, arg):
-        if len(arg) == 0:
+        if len(arg) == 1:
             print("** class name missing **")
             return
 
