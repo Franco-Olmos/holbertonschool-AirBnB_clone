@@ -15,8 +15,8 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     file = None
     classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
-               'City': City, 'Amenity': Amenity, 'Place': Place,
-               'Review': Review}
+            'City': City, 'Amenity': Amenity, 'Place': Place,
+            'Review': Review}
 
     def do_quit(self, arg):
         """dddddddddddddddddddddddddddddd"""
@@ -36,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         if argv is not BaseModel:
             print("** class doesn't exist **")
-    
+
     def do_show(self, argv):
         imput = args.split()
         if not imput:
