@@ -78,10 +78,10 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         if len(arg) == 0:
             print([str(a) for a in storage.all().values()])
-            return
+            """return"""
         if not arg.split()[0] in self.dic_classes.keys():
             print("** class doesn't exist **")
-            return
+            """return"""
         if arg in self.dic_classes.keys():
             for a in storage.all():
                 print(str(a))
