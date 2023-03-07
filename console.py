@@ -107,9 +107,9 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         if len(inputs) == 3:
             print("** value missing **")
-
-        setattr(storage.all()[key], inputs[2], inputs[3])
-        storage.save()
+        else:
+            setattr(storage.all()[key], inputs[2], inputs[3])
+            storage.save()
 
 
 if __name__ == '__main__':
