@@ -41,33 +41,25 @@ class HBNBCommand(cmd.Cmd):
             print(inst.id)
     
     
-    """def do_show(self, argv):
-        imput = argv.split()
-        if not imput:
-            print("** class name missing **")
-        if argv is not BaseModel:
-            print("** class doesn't exist **")
-        if len(argv) < 2:
-            print("** instance id missing **")"""
 
-    def do_show(self, argv):
-        """Show all contents based on id or all if dont specified."""
-        inputs = argv.split()
+
+    def do_show(self, arg):
+        inputs = arg.split()
         if not inputs:
             print("** class name missing **")
-        elif inputs[0] not in HBNBCommand.dic_classes.keys():
+        elif inputs[0] not in self.dic_classes:
             print("** class doesn't exist **")
         elif len(inputs) < 2:
             print("** instance id missing **")
         else:
-            key = inputs[0] + '.' + inputs[1]
-            if key not in storage.all():
-                print("** no instance found **")
+            key = inputs[0] + "." + inputs[1]
+            all_inst = storage.all()
+            if key in all_inst.keys():
+                print(all_inst[key])
             else:
-                all_objs = storage.all()
-                key = inputs[0] + '.' + inputs[1]
-                if key in all_objs.keys():
-                    print(all_objs[key])
+                print("** no instance found **")
+
+
 
     def do_destroy(self, arg):
         if len(arg) == 0:
