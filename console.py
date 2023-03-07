@@ -55,9 +55,8 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-
-
     def do_destroy(self, arg):
+        """Add comment"""
         if len(arg) == 0:
             print("** class name missing **")
             return
@@ -87,8 +86,6 @@ class HBNBCommand(cmd.Cmd):
             for a in storage.all():
                 print(str(a))
 
-
-
     def do_update(self, arg):
         """Add comment"""
         inputs = arg.split()
@@ -98,7 +95,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(inputs) < 2:
             print("** instance id missing **")
-
         key = inputs[0] + "." + inputs[1]
         all_arg = storage.all()
         if key not in all_arg.keys():
