@@ -14,7 +14,7 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     file = None
-    classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
+    dic_classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
                'City': City, 'Amenity': Amenity, 'Place': Place,
                'Review': Review}
 
@@ -30,23 +30,16 @@ class HBNBCommand(cmd.Cmd):
         """dddddddddddddddddddddddddddddd"""
         pass
 
-    """def do_create(self, argv):
-        imput = args.split()
-        if not imput:
+    def do_create(self, arg):
+        if not arg:
             print("** class name missing **")
-        if argv is not BaseModel:
-            print("** class doesn't exist **")"""
-    def do_create(self, argv):
-        """Create a new class and asigns it an id."""
-        inputs = argv.split()
-        if not inputs:
-            print("** class name missing **")
-        elif inputs[0] not in HBNBCommand.classes.keys():
+        elif arg not in self.dic_classes:
             print("** class doesn't exist **")
         else:
-            instance = HBNBCommand.classes[inputs[0]]()
-            print(instance.id)
-            instance.save()
+            inst = self.dic_classes[arg]()
+            storage.save()
+            print(inst.id)
+    
     
     """def do_show(self, argv):
         imput = argv.split()
@@ -62,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
         inputs = argv.split()
         if not inputs:
             print("** class name missing **")
-        elif inputs[0] not in HBNBCommand.classes.keys():
+        elif inputs[0] not in HBNBCommand.dic_classes.keys():
             print("** class doesn't exist **")
         elif len(inputs) < 2:
             print("** instance id missing **")
@@ -82,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         argument = arg.split()
-        if not argument[0] in self.classes.keys():
+        if not argument[0] in self.dic_classes.keys():
             print("** class doesn't exist **")
             return
         if len(argument) > 1:
@@ -111,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
         inputs = argv.split()
         if not inputs:
             print(list((storage.all())))
-        elif inputs[0] not in HBNBCommand.classes.keys():
+        elif inputs[0] not in HBNBCommand.dic_classes.keys():
             print("** class doesn't exist **")
         else:
             list_all = []
