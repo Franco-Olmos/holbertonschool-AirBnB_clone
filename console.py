@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif inputs[0] not in self.dic_classes:
             print("** class doesn't exist **")
-        elif len(inputs) = 1:
+        elif len(inputs) < 2:
             print("** instance id missing **")
 
         key = inputs[0] + "." + inputs[1]
