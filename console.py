@@ -14,9 +14,7 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     file = None
-    dic_classes = {'BaseModel': BaseModel, 'User': User, 'State': State,
-               'City': City, 'Amenity': Amenity, 'Place': Place,
-               'Review': Review}
+    dic_classes = {"BaseModel": BaseModel, "User": User, "State": State, "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
 
     def do_quit(self, arg):
         """dddddddddddddddddddddddddddddd"""
@@ -40,10 +38,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
             print(inst.id)
     
-    
-
-
     def do_show(self, arg):
+        """Add comment"""
         inputs = arg.split()
         if not inputs:
             print("** class name missing **")
@@ -80,19 +76,18 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** instance id missing **")
 
-    """def do_all(self, arg):
+    def do_all(self, arg):
         if len(arg) == 0:
             print([str(a) for a in storage.all().values()])
             return
-        if not arg.split()[0] in self.classes.keys():
+        if not arg.split()[0] in self.dic_classes.keys():
             print("** class doesn't exist **")
             return
         if arg in self.classes.keys():
             for a in storage.all():
-                print(str(a))"""
+                print(str(a))
 
-    def do_all(self, argv):
-        """Show all contents based on id or all if dont specified."""
+    """def do_all(self, argv):
         inputs = argv.split()
         if not inputs:
             print(list((storage.all())))
@@ -104,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
             for obj_id in storage.all().keys():
                 if obj_id.split(".")[0] == inputs[0]:
                     list_all.append(str(storage.all()[obj_id]))
-            print(list_all)
+            print(list_all)"""
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
