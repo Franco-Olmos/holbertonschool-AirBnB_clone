@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif inputs[0] not in self.dic_classes:
             print("** class doesn't exist **")
-        elif len(inputs) < 2:
+        elif len(inputs) = 1:
             print("** instance id missing **")
         else:
             key = inputs[0] + "." + inputs[1]
@@ -83,23 +83,34 @@ class HBNBCommand(cmd.Cmd):
         if not arg.split()[0] in self.dic_classes.keys():
             print("** class doesn't exist **")
             return
-        if arg in self.classes.keys():
+        if arg in self.dic_classes.keys():
             for a in storage.all():
                 print(str(a))
 
-    """def do_all(self, argv):
-        inputs = argv.split()
+
+
+    def do_update(self, arg):
+        """Add comment"""
+        inputs = arg.split()
         if not inputs:
-            print(list((storage.all())))
-        elif inputs[0] not in HBNBCommand.dic_classes.keys():
+            print("** class name missing **")
+        elif inputs[0] not in self.dic_classes:
             print("** class doesn't exist **")
-        else:
-            list_all = []
-            storage.reload()
-            for obj_id in storage.all().keys():
-                if obj_id.split(".")[0] == inputs[0]:
-                    list_all.append(str(storage.all()[obj_id]))
-            print(list_all)"""
+        elif len(inputs) = 2:
+            print("** instance id missing **")
+
+        key = inputs[0] + "." + inputs[1]
+        all_arg = storage.all()
+        if key not in all_arg.keys():
+            print("** no instance found **")
+        if len(inputs) == 2:
+            print("** attribute name missing **")
+        if len(inputs) == 3:
+            print("** value missing **")
+
+        setattr(storage.all()[key], inputs[2], inputs[3])
+        storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
