@@ -104,9 +104,9 @@ class HBNBCommand(cmd.Cmd):
         if key not in all_arg.keys():
             print("** no instance found **")
         if len(inputs) < 3:
-            print("** attribute name missing **")
-        if len(inputs) < 4:
             print("** value missing **")
+        if len(inputs) < 4:
+            print("** attribute name missing **")
         else:
             setattr(storage.all()[key], inputs[2], inputs[3])
             storage.save()
