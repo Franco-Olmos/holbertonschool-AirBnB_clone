@@ -96,8 +96,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(inputs) < 2:
             print("** instance id missing **")
         key = inputs[0] + "." + inputs[1]
-        all_arg = storage.all()
-        if key not in all_arg.keys():
+        if key not in storage.all():
             print("** no instance found **")
         elif len(inputs) < 3:
             print("** attribute name missing **")
