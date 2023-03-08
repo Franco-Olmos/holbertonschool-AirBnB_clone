@@ -75,16 +75,22 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** instance id missing **")
 
-    def do_all(self, arg):
+    """def do_all(self, arg):
         if len(arg) == 0:
             print([str(a) for a in storage.all().values()])
-            """return"""
         if not arg.split()[0] in self.dic_classes.keys():
             print("** class doesn't exist **")
-            """return"""
         if arg in self.dic_classes.keys():
             for a in storage.all():
-                print(str(a))
+                print(str(a))"""
+
+    def do_all(self, arg):
+        args = arg.split()
+        if len(args) > 0 and args[0] not in HBNBCommand.dic_classes:
+            print("** class doesn't exist **")
+        else:
+            objects = storage.all()
+            print([str(objects[obj]) for obj in objects])
 
     """def do_update(self, arg):
         inputs = arg.split()
@@ -95,7 +101,8 @@ class HBNBCommand(cmd.Cmd):
         elif len(inputs) < 2:
             print("** instance id missing **")
         key = inputs[0] + "." + inputs[1]
-        if key not in storage.all():
+        all_arg = storage.all()
+        if key not in all_arg.keys():
             print("** no instance found **")
         elif len(inputs) < 3:
             print("** attribute name missing **")
