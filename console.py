@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         inputs = arg.split()
-        if inputs[0] not in self.dic_classes.keys():
+        if len(inputs) > 0 and inputs[0] not in self.dic_classes.keys():
             print("** class doesn't exist **")
         else:
             objects = storage.all()
