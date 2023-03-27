@@ -6,8 +6,35 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
+}
 
+.locations, .amenities {
+    height: 100%;
+    width: 25%;
+}
+
+h3 {
+    font-weight: 600;
+    color: #484848;
+    
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #484848;
+    margin-top: -17px;
+}
+
+.locations {
+    border-right: 1px solid #DDDDDD;
+    padding-left: 50px;
+    margin-right: 65px;
+}
+
+.amenities {
+    margin-right: 205px;
 }
 
 button {
