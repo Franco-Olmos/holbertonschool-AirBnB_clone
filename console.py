@@ -92,27 +92,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             print([str(a) for a in storage.all(arg).values()])"""
 
-    """def do_update(self, arg):
-        inputs = arg.split()
-        if not inputs:
-            print("** class name missing **")
-        elif inputs[0] not in self.dic_classes:
-            print("** class doesn't exist **")
-        elif len(inputs) < 2:
-            print("** instance id missing **")
-        key = inputs[0] + "." + inputs[1]
-        all_arg = storage.all()
-        if key not in all_arg.keys():
-            print("** no instance found **")
-        elif len(inputs) < 3:
-            print("** attribute name missing **")
-        elif len(inputs) < 4:
-            print("** value missing **")
-        else:
-            setattr(storage.all()[key], inputs[2], inputs[3])
-            storage.save()"""
+   
 
-    def do_update(self, arg):
+    """def do_update(self, arg):
         inputs = arg.split()
         if not inputs:
             print("** class name missing **")
@@ -130,7 +112,28 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
             else:
                 setattr(storage.all()[key], inputs[2], inputs[3])
-                storage.save()
+                storage.save()"""
+
+        def do_update(self, argv):
+            """Add an attribute in a class."""
+            inputs = argv.split()
+            if not inputs:
+                print("** class name missing **")
+            elif inputs[0] not in HBNBCommand.dic_classes.keys():
+                print("** class doesn't exist **")
+            elif len(inputs) < 2:
+                print("** instance id missing **")
+            else:
+                key = inputs[0] + "." + inputs[1]
+                if key not in storage.all():
+                    print("** no instance found **")
+                elif len(inputs) < 3:
+                    print("** attribute name missing **")
+                elif len(inputs) < 4:
+                    print("** value missing **")
+                else:
+                    setattr(storage.all()[key], inputs[2], inputs[3])
+                    storage.save()
 
 
 if __name__ == '__main__':
